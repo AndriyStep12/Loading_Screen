@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            background-image: url(https://i01.appmifile.com/webfile/globalimg/products/pc/mitv-4s55/index3.jpg);
+            background-size: cover;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        #progresPlace{
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            font-size: 50px;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            color: #fff;
+        }
+        
+        .row{
+            height: 20px;
+            width: 0%;
+            background-color: red;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row" id="row"></div>
+    <div class="wrap" id="wrap"></div>
+    <div id="progresPlace">
+
+    </div>
+
+
+
+    <script>
+        let load = 0;
+        let blurFon = 10;
+        let progresInterval;
+        let progres = 0;
+        let ptogresOpacity = 1;
+        progresInterval = setInterval(function() {
+            if (progres == 100) {
+                clearInterval(progresInterval)
+                progresPlace.style.display = 'none';
+                row.style.display = 'none';
+            } else {
+                load++;
+                row.style.width = load + '%';
+                row.style.transition = '0.5s';
+                wrap.style.filter = 'blur('+ blurFon + 'px)';
+                progres += 1;
+                ptogresOpacity = ptogresOpacity - 0.0095;
+                progresPlace.innerText = progres + '%';
+                progresPlace.style.opacity = ptogresOpacity; 
+                blurFon = blurFon - 0.1;
+
+        }}, 100)
+
+    </script>
+</body>
+
+</html>
